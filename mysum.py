@@ -19,7 +19,7 @@ def mymean(args: List[int]) -> int:
     return result/len(args)
 
 
-if __name__=="__main__":
+if __name__=="__name__":
     # result = mysum1(1,2,3)
     # result = mysum2([1,2,3], 5)
     result = mymean([1,2,3])
