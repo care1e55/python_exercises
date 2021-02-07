@@ -31,7 +31,7 @@ def wc(file_path: str) -> Dict[str, int]:
     return result
 
 def print_result(result: Dict[str, int]):
-    for items in result.items():
-        print(f'{items[0]}: {items[1]}')        
+    for key, value in result.items():
+        print(f'{key}: {value}')        
 
 print_result(wc(file_path))
