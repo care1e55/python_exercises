@@ -1,7 +1,7 @@
 
 def myxml(tag, content='', **kwargs) -> str:
-    kwargs_str = [ f'{key}={value}' for key, value in kwargs.items() ]
-    return f'<{tag} {" ".join(kwargs_str)}>{content}</{tag}>'
+    kwargs_str = [ f' {key}={value}' for key, value in kwargs.items() ]
+    return f'<{tag}{"".join(kwargs_str)}>{content}</{tag}>'
 
 if __name__ == '__main__':
     print(myxml('foo'))
