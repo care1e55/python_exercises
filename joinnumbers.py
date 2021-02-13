@@ -1,4 +1,5 @@
 from typing import List, Any, Dict
+import string 
 
 def joinnumbers(range_to: int) -> str:
     return ",".join(str(number) for number in range(range_to) if number < 10)
@@ -19,3 +20,4 @@ if __name__=="__main__":
     print(add_numbers("10 abc 20 de44 30 55fg 40"))
     print(flatten([[1,2], [3,4]]))
     print(flip_dict({'a':1, 'b':2, 'c':3}))
+    print({ key: value for value, key in enumerate(string.ascii_lowercase, 1)})
