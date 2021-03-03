@@ -1,17 +1,16 @@
 import math
+import operator
+
 SIZE = 4
 SQRT = int(math.sqrt(SIZE))
 
-test_field = [
-    [1,2,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,2,4],
-]
+
+def get_column(list_, n):
+    return map(operator.itemgetter(n), list_)
 
 
 def get_input_field():
-    return [[i for i in input()] for _ in range(4)]
+    return [[int(i) for i in input()] for _ in range(SIZE)]
 
 
 def is_valid(num, row, column, field):
@@ -20,7 +19,7 @@ def is_valid(num, row, column, field):
     if num in field[row]:
         return False
     # check column
-    if num in field[:][column]:
+    if num in get_column(field, column):
         return False
     # check square
     start_row = row - row % SQRT
@@ -34,8 +33,7 @@ def is_valid(num, row, column, field):
 
 def solve(row, column, field):
     "iterate over and solve"
-    print(field)
-    if row == SIZE-1 and col == SIZE:
+    if row == SIZE-1 and column == SIZE:
         return True
     # next row   
     if column == SIZE:
@@ -54,6 +52,12 @@ def solve(row, column, field):
     return False
 
 
+def print_field(field):
+    for row in field:
+        print(*row, sep="")
+
+
 if __name__=="__main__":
-    if solve(0, 0, test_field):
-        print(test_field)
+    field = get_input_field()
+    if solve(0, 0, field):
+        print_field(field)
