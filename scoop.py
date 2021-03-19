@@ -1,22 +1,20 @@
 from typing import List
+from dataclasses import dataclass, field
 
+@dataclass
 class Scoop():
-    def __init__(this, flavor: str = None):
-        this.flavor = flavor
-
-    def __repr__(this) -> str:
-        return this.flavor
+    flavor: str
 
 
+@dataclass
 class Bowl():
-    def __init__(this):
-        this.bowl = []
+    bowl: List[Scoop] = field(default_factory=list)
 
     def add_scoops(this, *args):
         this.bowl += [*args]
 
-    def __repr__(this):
-        return ", ".join(scoop.__repr__() for scoop in this.bowl)
+    def __repr__(this) -> str:
+        return ", ".join(scoop.flavor for scoop in this.bowl)
 
 
 def create_scoops() -> List[str]:
@@ -28,7 +26,7 @@ def create_scoops() -> List[str]:
 
 
 if __name__ == "__main__":
-    # print(create_scoops())
+    print(create_scoops())
     s1, s2, s3 = Scoop('chocolate'), Scoop('vanilla'), Scoop('persimmon')
     b = Bowl()
     b.add_scoops(s1)
