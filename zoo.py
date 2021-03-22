@@ -49,10 +49,27 @@ class Parrot(Animal):
         return super().__repr__()
 
 
+class Cage():
+    def __init__(self, id_number):
+        self.id_number = id_number
+        self.animals = []
+
+    def add_animals(self, *animals):
+        for animal in animals:
+            self.animals.append(animal)
+
+    def __repr__(self):
+        return "\n".join(animal.__repr__() for animal in self.animals)
+
+
 if __name__ == '__main__':
     s1 = Sheep()
     s2 = Sheep('black')
     w = Wolf()
     p = Parrot()
+    c = Cage(1)
+    c.add_animals(s1, s2, w, p)
 
     print(s1, s2, w, p, sep='\n')
+    print(c)
+    print(id(w))
