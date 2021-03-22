@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 
 @dataclass
 class Animal():
@@ -62,14 +63,55 @@ class Cage():
         return "\n".join(animal.__repr__() for animal in self.animals)
 
 
+class Zoo():
+    def __init__(self):
+        self.cages = []
+
+    def add_cages(self, *cages):
+        for cage in cages:
+            self.cages.append(cage)
+
+    def animals_by_color(self, color) -> List[Animal]:
+        return [
+            animal for cage in self.cages for animal in cage.animals if animal.color == color
+        ]
+
+
+    def animals_by_legs(self, num_legs) -> List[Animal]:
+        return [
+            animal for cage in self.cages for animal in cage.animals if animal.number_of_legs == num_legs
+        ]
+
+    def number_of_legs(self) -> int:
+        return sum(animal.number_of_legs for cage in self.cages for animal in cage.animals)
+
+
+    def __repr__(self):
+        "Print all the cages"
+        return "\n".join(cage.__repr__() for cage in self.cages)
+
+
 if __name__ == '__main__':
     s1 = Sheep()
     s2 = Sheep('black')
     w = Wolf()
     p = Parrot()
-    c = Cage(1)
-    c.add_animals(s1, s2, w, p)
+    c1 = Cage(1)
+    c2 = Cage(2)
+    c1.add_animals(w, p)
+    c1.add_animals(s1, s2)
+
+    z = Zoo()
+    z.add_cages(c1, c2)
 
     print(s1, s2, w, p, sep='\n')
-    print(c)
+    print(c1)
+    print(c2)
     print(id(w))
+    print('====================================')
+    print(z.number_of_legs())
+    print(z.animals_by_color('white'))
+    print(z)
+
+
+
