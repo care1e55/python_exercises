@@ -13,6 +13,17 @@ class MyEnumerate():
         return self.index, self.iterator.__next__()
 
 
+def myenumerate(iterable):
+    index = 0 
+    for i in iterable:
+        yield index, i
+    index +=1
+
+
 if __name__ == '__main__':
     for i in MyEnumerate(range(10)):
         print(i)
+
+    for i in myenumerate(range(10)):
+        print(i)
+
