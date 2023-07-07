@@ -1,6 +1,5 @@
-from collections import Iterable
 from dataclasses import dataclass
-from typing import Tuple, List
+from typing import Tuple
 
 result = []
 
@@ -19,10 +18,6 @@ class Row:
 
 def read_input() -> Tuple[int]:
     return tuple(map(int, input().split()))
-
-
-# def read_input(input_str) -> Tuple[int]:
-#     return tuple(map(int, input_str.split()))
 
 
 def read_rows(rows_num: int):

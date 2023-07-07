@@ -1,5 +1,7 @@
 import time
 
+cache_table = {}
+
 
 def measure_time(func):
     def wrapper(*args, **kwargs):
@@ -12,7 +14,6 @@ def measure_time(func):
     return wrapper
 
 
-cache_table = {}
 def cache(func):
     def wrapper(*args, **kwargs):
         number = args[0]
@@ -21,6 +22,7 @@ def cache(func):
         else:
             cache_table[number] = func(number)
             return cache_table[number]
+
     return wrapper
 
 
@@ -45,6 +47,7 @@ def fibonacci_recur(number: int):
         if number == 2:
             return 2
         return fibonacci_wrapper(number - 1) + fibonacci_wrapper(number - 2)
+
     return fibonacci_wrapper(number)
 
 

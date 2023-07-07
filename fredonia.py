@@ -1,15 +1,20 @@
-
 PROVINCES = ['harpo', 'chico', 'groucho', 'zeppo']
 
 province_tax_rates = {
-    'harpo': 0.5, 
-    'chico': 0.5, 
-    'groucho': 0.7, 
+    'harpo': 0.5,
+    'chico': 0.5,
+    'groucho': 0.7,
     'zeppo': 0.4
 }
 
-class HourTooLowError(Exception): pass
-class HourTooHighError(Exception): pass
+
+class HourTooLowError(Exception):
+    pass
+
+
+class HourTooHighError(Exception):
+    pass
+
 
 def time_percentage(hour):
     return hour / 24.0
