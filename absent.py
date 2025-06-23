@@ -10,4 +10,4 @@ def find_missing(sequence: List[str]):
     return None
 
 if __name__ == "__main__":
-    print(find_missing(list(input())))
+    print(find_missing(list(input())))    
